@@ -56,7 +56,7 @@ For windows users:
 - start over is to start again
 - play button acts as a pause button aswell.
 - click on the forward and backward buttons to move in correspoding direction.
-<p>
+<p align="center">
   <img src="https://github.com/tech-vin/Codiation/blob/main/demonstration.gif" width="500" title="demonstration", alt="image preivew">
 </p>
 
