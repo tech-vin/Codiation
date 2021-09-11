@@ -1,4 +1,4 @@
-# [Codiation]('https://www.coditation.com/') - Assignment Overiew
+# [Codiation](https://www.coditation.com/) - Assignment Overiew
 
 Imagine an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two
 possible states, live or dead. Every cell interacts with its eight neighbors, which are the cells that are
@@ -44,16 +44,22 @@ For MAC and Linux users:
 3. ```cd Codiation ```
 4. ```python3 main.py ```
 
-
 For windows users:   
 1. install numpy ```pip install numpy```
 2. ```git clone https://github.com/tech-vin/Codiation.git ```
 3. ```cd Codiation ```
 4. ```python main.py ```
 
+### General Instructions
+- Click on the play button to <b>start</b>
+- To change pattern, click on the dropdown menu and then click go button 
+- start over is to start again
+- play button acts as a pause button aswell.
+- click on the forward and backward buttons to move in correspoding direction.
+
 ## FAQs
 - Getting error related to Tkinter not found or Tkinter module not found.
 - This means that tkinter is not installed and you need to install it manually. Follow the below steps to fix it:
-- [windows users]('https://stackoverflow.com/a/50027385/11211289')
-- [Mac users]('https://stackoverflow.com/a/67465667/11211289')
-- [Linux Users]('https://stackoverflow.com/a/27673103/11211289')
+- [windows users](https://stackoverflow.com/a/50027385/11211289)
+- [Mac users](https://stackoverflow.com/a/67465667/11211289)
+- [Linux Users](https://stackoverflow.com/a/27673103/11211289)

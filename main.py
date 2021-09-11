@@ -9,7 +9,12 @@ class Screen(tk.Canvas):
     def __init__(self):
         self.window_side_length = 800
         self.window_shape_length = 300
-        tk.Canvas.__init__(self, root, height=self.window_side_length, width=self.window_side_length)
+        tk.Canvas.__init__(
+            self, 
+            root, 
+            height=self.window_side_length, 
+            width=self.window_side_length
+            )
         self.board = Grid()
         self.board.new_pattern('glider')
         self.ticks = 0
@@ -23,6 +28,8 @@ class Screen(tk.Canvas):
         self.patternlist = tk.StringVar()
         self.patternlist.set('clear')
         self.ticks_count = 0
+        self.msg = tk.Label(root, text=None)
+        self.msg.place(x=600, y=10)
 
         if self.action_state:
                 self.tick()
@@ -38,10 +45,18 @@ class Screen(tk.Canvas):
 
     def place_squares(self):
         self.delete('all')
-        self.create_rectangle(0, 0, self.window_side_length, self.window_side_length, fill='black')
+        self.create_rectangle(
+            0, 0, 
+            self.window_side_length, 
+            self.window_side_length, 
+            fill='black'
+            )
 
         if self.window_side_length % self.slider.get() != 0:  
-            closest = sorted(self.factors_of_300, key=lambda x: abs(x - self.slider.get()))
+            closest = sorted(
+                self.factors_of_300, 
+                key=lambda x: abs(x - self.slider.get())
+                )
             self.separation_length = self.window_shape_length / closest[0]
 
         else:
@@ -72,13 +87,14 @@ class Screen(tk.Canvas):
 
     def tick(self):
             if self.ticks != 100:
-                time.sleep(0.5)
+                #time.sleep(0.5)   uncomment for the delayed preview
+                self.msg.config(text='')
                 self.ticks += 1
                 self.board.tick()
             else:
                 self.action_state = 1
-                tk.Label(root, text='100 ticks completed!').place(x=600, y=10)
-
+                self.msg.config(text='100 ticks completed!')
+                
         
 
     def reverse_tick(self):
@@ -111,25 +127,65 @@ class Screen(tk.Canvas):
 def main():
     canv = Screen()
     canv.grid(column=2)
-    #tk.Frame(root, width=100).grid(column=0)
-    tk.Button(root, text='<', command=canv.reverse_tick).grid(column=2, row=1, sticky=tk.W)
-    f = tk.Frame(root)
-    f.grid(column=2, row=1)
-    play_pause = tk.Button(f, text='Play', command=canv.todo)
+    tk.Button(
+        root, 
+        text='<', 
+        command=canv.reverse_tick).grid(column=2, row=1, sticky=tk.W)
+
+    btn_frame = tk.Frame(root)
+    btn_frame.grid(column=2, row=1)
+
+    play_pause = tk.Button(
+        btn_frame, 
+        text='Play', 
+        command=canv.todo
+        )
     play_pause.pack(side=LEFT, expand=True)
-    tk.Button(f, text='Start Over', command=canv.start_over).pack(side=LEFT, expand=True)
-    tk.Button(f, text='Home', command=canv.home).pack(side=LEFT, expand=True)
-    tk.Button(root, text='>', command=canv.tick).grid(column=2, row=1, sticky=tk.E)
-    frame = tk.LabelFrame(root, text='Operations')
+
+    tk.Button(
+        btn_frame, 
+        text='Start Over', 
+        command=canv.start_over
+        ).pack(side=LEFT, expand=True)
+
+    tk.Button(
+        root, 
+        text='>', 
+        command=canv.tick
+        ).grid(column=2, row=1, sticky=tk.E)
+
+    frame = tk.LabelFrame(
+        root, 
+        text='Operations'
+        )
     frame.grid(column=2)
-    tk.Label(frame, text='Zoom').grid(row=0, column=0)
+
+    tk.Label(
+        frame, 
+        text='Zoom'
+        ).grid(row=0, column=0)
+
     slider = tk.Scale(frame, from_=1, to=150, orient=tk.HORIZONTAL)
     slider.grid(row=0, column=1)
     slider.set(25)
-    tk.Label(frame, text='Select Pattern').grid(row=1, column=0)
-    options = tk.OptionMenu(frame, canv.patternlist, 'clear', 'glider', 'glider 2', 'glider gun', 'random')
+
+    tk.Label(
+        frame, 
+        text='Select Pattern'
+        ).grid(row=1, column=0)
+
+    options = tk.OptionMenu(
+        frame, 
+        canv.patternlist, 
+        'clear', 'glider', 'glider 2', 'glider gun', 'random'
+        )
     options.grid(row=1, column=1)
-    tk.Button(frame, text='Go', command=canv.set_pattern).grid(row=1, column=2)
+
+    tk.Button(
+        frame, 
+        text='Go', 
+        command=canv.set_pattern).grid(row=1, column=2)
+
     canv.play_pause = play_pause
     canv.slider = slider
     canv.place_squares()
@@ -145,6 +201,5 @@ def main():
 if __name__ == '__main__':
     root = tk.Tk()
     root.title('CODIATION')
-    #root.geometry('500x500')
     main()
     root.mainloop()

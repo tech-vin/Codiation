@@ -70,7 +70,7 @@ class Grid(object):
     def tick(self):
         self.expand()
         next_grid = np.zeros((self.size+ self.position,self.size+self.position))
-        current_grid = self.current_grid.tolist() # not using numpy functions because slows process down
+        current_grid = self.current_grid.tolist() 
         for i in range(self.section_tobe_evaluated[2]-2, self.section_tobe_evaluated[3]+2):
             for i2 in range(self.section_tobe_evaluated[0]-2,self.section_tobe_evaluated[1]+2):
                 neighbors = 0
@@ -93,12 +93,12 @@ class Grid(object):
                 next_grid[i+self.position][i2+self.position] = 1 if current_state and (neighbors == 2 or neighbors == 3) else (1 if neighbors == 3 else 0)
         self.current_grid = next_grid
 
-        self.past_ticks.append(self.live_cells()) # for tick reverse
+        self.past_ticks.append(self.live_cells()) 
 
     def tick_reverse(self):
         next_grid = np.zeros((self.size, self.size))
         try:
-            past_tick_grid = self.past_ticks[-1] # 'coordinates' of active cells of past boards
+            past_tick_grid = self.past_ticks[-1] 
             for tup in past_tick_grid:
                 next_grid[tup[0]][tup[1]] = 1
             del self.past_ticks[-1]
@@ -109,9 +109,6 @@ class Grid(object):
             del self.past_ticks[0]
 
     def expand(self):
-        """Stretching list to keep up with the amount of space the living cells take up. This function also
-            determines what part of the array to evaluate. After the section of the list that needs to be evaluated
-            is determined, the tick function evaluates the section and "puts it back" into the original array."""
         live = self.live_cells()
         live_x = [x[1] for x in live]
         live_y = [y[0] for y in live]
