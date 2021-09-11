@@ -56,9 +56,10 @@ For windows users:
 - start over is to start again
 - play button acts as a pause button aswell.
 - click on the forward and backward buttons to move in correspoding direction.
-- <p>
-  <img src="https://github.com/tech-vin/Codiation/blob/main/demonstration.gif" width="350" title="demonstration", alt="image preivew">
+<p>
+  <img src="https://github.com/tech-vin/Codiation/blob/main/demonstration.gif" width="500" title="demonstration", alt="image preivew">
 </p>
+
 ## FAQs
 - Getting error related to Tkinter not found or Tkinter module not found.
 - This means that tkinter is not installed and you need to install it manually. Follow the below steps to fix it:
