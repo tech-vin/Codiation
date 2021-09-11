@@ -1,17 +1,19 @@
 from tkinter.constants import LEFT
 from grid import Grid
 import tkinter as tk
+from tkinter import messagebox
+import time
 
 
 class Screen(tk.Canvas):
     def __init__(self):
         self.window_side_length = 800
-        self.window_shape_length = 200
+        self.window_shape_length = 300
         tk.Canvas.__init__(self, root, height=self.window_side_length, width=self.window_side_length)
         self.board = Grid()
         self.board.new_pattern('glider')
         self.ticks = 0
-        self.factors_of_300 = [x for x in range(1, 501) if self.window_side_length%x == 0 and x < 501] # to get equal spacing of the squares on the grid
+        self.factors_of_300 = [x for x in range(1, 151) if self.window_side_length%x == 0 and x < 151]
         self.action_state = 0 
         self.separation_length = 0
         self.moving_x = 0
@@ -20,9 +22,11 @@ class Screen(tk.Canvas):
         self.play_pause = None
         self.patternlist = tk.StringVar()
         self.patternlist.set('clear')
+        self.ticks_count = 0
 
         if self.action_state:
-            self.tick()
+                self.tick()
+                
 
     def todo(self, *action): 
         if self.action_state:
@@ -67,8 +71,15 @@ class Screen(tk.Canvas):
         self.after(10, self.place_squares)
 
     def tick(self):
-        self.ticks += 1
-        self.board.tick()
+            if self.ticks != 100:
+                time.sleep(0.5)
+                self.ticks += 1
+                self.board.tick()
+            else:
+                self.action_state = 1
+                tk.Label(root, text='100 ticks completed!').place(x=600, y=10)
+
+        
 
     def reverse_tick(self):
         self.board.tick_reverse()
@@ -85,13 +96,13 @@ class Screen(tk.Canvas):
 
     def move(self, action):
         if action.keycode == 37:
-            self.moving_x += 20
+            self.moving_x += 10
         elif action.keycode == 38:
-            self.moving_y += 20
+            self.moving_y += 10
         elif action.keycode == 39:
-            self.moving_x -= 20
+            self.moving_x -= 10
         elif action.keycode == 40:
-            self.moving_y -= 20
+            self.moving_y -= 10
 
     def set_pattern(self):
         self.board.new_pattern(self.patternlist.get())
