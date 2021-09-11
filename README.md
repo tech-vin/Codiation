@@ -13,7 +13,7 @@
 
 ## FAQs
 - Getting error related to Tkinter not found or Tkinter module not found.
-- This means that tkinter is not installed and you need to install it manually. Follow the steps in the links below:
+- This means that tkinter is not installed and you need to install it manually. Follow the below steps to fix it:
 - [windows users]('https://stackoverflow.com/a/50027385/11211289')
 - [Mac users]('https://stackoverflow.com/a/67465667/11211289')
 - [Linux Users]('https://stackoverflow.com/a/27673103/11211289')
