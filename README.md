@@ -36,12 +36,6 @@ The program will be evaluated on the basis of the following criterion:
 - install numpy
 ```pip install numpy```
 
-## FAQs
-- Getting error related to Tkinter not found or Tkinter module not found.
-- This means that tkinter is not installed and you need to install it manually. Follow the below steps to fix it:
-- [windows users]('https://stackoverflow.com/a/50027385/11211289')
-- [Mac users]('https://stackoverflow.com/a/67465667/11211289')
-- [Linux Users]('https://stackoverflow.com/a/27673103/11211289')
 
 ## Instructions
 For MAC and Linux users:  
@@ -57,3 +51,9 @@ For windows users:
 3. ```cd Codiation ```
 4. ```python main.py ```
 
+## FAQs
+- Getting error related to Tkinter not found or Tkinter module not found.
+- This means that tkinter is not installed and you need to install it manually. Follow the below steps to fix it:
+- [windows users]('https://stackoverflow.com/a/50027385/11211289')
+- [Mac users]('https://stackoverflow.com/a/67465667/11211289')
+- [Linux Users]('https://stackoverflow.com/a/27673103/11211289')
