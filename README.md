@@ -44,7 +44,16 @@ The program will be evaluated on the basis of the following criterion:
 - [Linux Users]('https://stackoverflow.com/a/27673103/11211289')
 
 ## Instructions
-For MAC and Linux users:  ```python3 main.py```
+For MAC and Linux users:  
+1. install numpy ```pip install numpy```
+2. ```git clone https://github.com/tech-vin/Codiation.git ```
+3. ```cd Codiation ```
+4. ```python3 main.py ```
 
-For windows users:   ```python main.py```
+
+For windows users:   
+1. install numpy ```pip install numpy```
+2. ```git clone https://github.com/tech-vin/Codiation.git ```
+3. ```cd Codiation ```
+4. ```python main.py ```
 
